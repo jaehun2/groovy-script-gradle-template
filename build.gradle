@@ -1,0 +1,17 @@
+apply plugin: 'groovy'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.3.10',
+            'mysql:mysql-connector-java:5.1.36',
+            'org.postgresql:postgresql:9.4-1201-jdbc41'
+    testCompile 'junit:junit:4.12'
+}
+
+task runScript (dependsOn: 'classes', type: JavaExec) {
+    main = 'mainscript'
+    classpath = sourceSets.main.runtimeClasspath
+}
